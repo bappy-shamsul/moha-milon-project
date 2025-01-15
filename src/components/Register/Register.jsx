@@ -23,6 +23,8 @@ const Register = () => {
             console.log(error)
         })
     }
+
+  
     return (
         <div>
             <div className="hero bg-base-200 min-h-screen">
