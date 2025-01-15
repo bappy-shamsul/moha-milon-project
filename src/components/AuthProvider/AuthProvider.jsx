@@ -5,30 +5,35 @@ import auth from "../../FireBase/FireBase.config";
 
 export const AuthContext = createContext(null)
 
-const AuthProvider = ( {children}) => {
+const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-    const createUser = (email, password) =>{
+    const createUser = (email, password) => {
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
-    } 
+    }
 
-    const signInUser = (email, password) =>{
+    const signInUser = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
-    const logOut = () =>{
+    const logOut = () => {
+        setLoading(true)
         return signOut(auth)
     }
-    useEffect(()=>{
-       const unSubscribe =  onAuthStateChanged(auth, currentUser =>{
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, currentUser => {
+            setLoading(false)
             setUser(currentUser)
             console.log('observing the state', currentUser)
         });
-        return () =>{
+        return () => {
             unSubscribe()
         }
-    },[])
-   const authInfo = { createUser, signInUser, logOut, user}
+    }, [])
+    const authInfo = { createUser, signInUser, logOut, user, loading }
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

@@ -24,7 +24,14 @@ const NavBar = () => {
         <NavLink to='/'>Home</NavLink>
         <NavLink to='/login'> Log-In</NavLink>
         <NavLink to='/register'>Sign up</NavLink>
-        <NavLink to='/orders'>All Orders</NavLink>
+        
+        {user &&  //protected from external users
+            <>
+            <NavLink to='/orders'>All Orders</NavLink>
+            <NavLink to='/profile'>Profile</NavLink>
+            <NavLink to='/dashboard'>Dashboard</NavLink>
+            </>
+        }
     </div>
 
 

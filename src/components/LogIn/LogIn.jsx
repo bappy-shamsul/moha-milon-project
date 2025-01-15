@@ -1,10 +1,12 @@
 
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 
 const LogIn = () => {
     const {signInUser} = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleLogIn = e =>{
         
@@ -16,7 +18,10 @@ const LogIn = () => {
 
         signInUser(email, password)
         .then(result =>{
-            console.log(result.user)
+            console.log(result.user);
+            e.target.reset()  //form is reset after reloading
+            navigate('/')
+
         })
         .catch(error =>{
             console.olog(error)
