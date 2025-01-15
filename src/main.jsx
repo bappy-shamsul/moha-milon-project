@@ -11,6 +11,7 @@ import LogIn from './components/LogIn/LogIn';
 import Register from './components/Register/Register';
 import Orders from './components/Orders/Orders'
 import AuthProvider from './components/AuthProvider/AuthProvider';
+import PrivateRouters from './components/Routers/PrivateRouters';
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/orders',
-        element: <Orders></Orders>
+        element:  <PrivateRouters><Orders></Orders></PrivateRouters>
       },
 
     ]
