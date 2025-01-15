@@ -1,17 +1,15 @@
-import { useContext } from "react";
-import { AuthContext } from "../AuthProvider/AuthProvider";
+
 
 
 const Home = () => {
 
-    const authInfo = useContext(AuthContext)
-    console.log(authInfo)
+    
     return (
         <div>
             <h2>
                 A well-designed registration home page should include clear and inviting content that guides users through the registration process. Here's a suggestion for your registration home page content:
 
-                Registration Home Page Content</h2>
+                Registration Home Page Content </h2>
                 <p>Header:
                 Welcome Message:
                 Welcome to [Your Website Name]! Join us to unlock exclusive features and connect with our community.
